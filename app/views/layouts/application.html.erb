@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>系统</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+
+          <!-- 标题栏开始-->
+          <div>
+            <%= render "layouts/title"%>
+          </div>
+          <!-- 标题栏结束-->
+          <!-- 消息通知开始-->
+          <div>
+            <%=render "layouts/notice"%>
+          </div>
+          <!-- 消息通知结束-->
+          <div class="row-fluid">
+
+            <!-- 左边栏开始-->
+            <div class="span2">
+              <%= yield(:left)%>
+            </div>
+            <!-- 左边栏结束-->
+
+            <!-- 主内容开始-->
+            <div class="span8">
+              <%= yield %>
+            </div>
+            <!-- 主内容结束-->
+
+            <!-- 右边栏开始-->
+            <div class="span2">
+              <%= yield(:right)%>
+            </div>
+            <!-- 右边栏结束-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+        </html>
