@@ -6,7 +6,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body style="overflow-x:auto;">
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
@@ -23,21 +23,37 @@
           <!-- 消息通知结束-->
           <div class="row-fluid">
 
-            <!-- 左边栏开始-->
-            <div class="span2">
-              <%= yield(:left)%>
+            <div class="span1">
             </div>
-            <!-- 左边栏结束-->
 
-            <!-- 主内容开始-->
-            <div class="span8">
-              <%= yield %>
+            <div class="span10">
+
+              <% if user_signed_in? %>
+                <!-- 轮播开始-->
+                <%= render "layouts/lunbo" %>
+              <%end%>
+              <!-- 轮播结束-->
+              <div class="row-fluid">
+                <% if user_signed_in? %>
+                  <%= render "layouts/titles/title_home"%>
+                  <!-- 左边栏开始-->
+                  <div class="span2">
+                    <%= yield(:left)%>
+                  </div>
+                  <!-- 左边栏结束-->
+                <%end%>
+
+                <!-- 主内容开始-->
+                <div class="span9">
+                  <%= yield %>
+                </div>
+                <!-- 主内容结束-->
+              </div>
             </div>
-            <!-- 主内容结束-->
 
             <!-- 右边栏开始-->
-            <div class="span2">
-              <%= yield(:right)%>
+            <div class="span1">
+              <%#= yield(:right)%>
             </div>
             <!-- 右边栏结束-->
 
@@ -45,7 +61,5 @@
         </div>
       </div>
     </div>
-  </div>
-
-</body>
-        </html>
+  </body>
+</html>

@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
     end
     root_path
   end
+
+  def to_time(time)
+    unless time==nil
+      to_time=time.strftime("%Y-%m-%d %H:%M:%S")
+    end
+  end
 end
