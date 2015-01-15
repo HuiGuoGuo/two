@@ -1,0 +1,92 @@
+<script src="/assets/fullcalendar.min.js"></script>
+<script type='text/javascript'>
+	$(document).ready(function() {
+var localOptions = {
+	buttonText: {
+		today: '今天',
+		month: '月',
+		day: '日',
+		week: '周'
+	},
+	monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+	monthNamesShort: ['一','二','三','四','五','六','七','八','九','十','十一','十二'],
+	dayNames: ['周日','周一','周二','周三','周四','周五','周六'],
+	dayNamesShort: ['日','一','二','三','四','五','六']
+}
+            
+                var calendar = $('#calendar').fullCalendar(
+                  $.extend({
+			header: {
+				left: 'prev,next today',
+				right: 'title'
+			},
+                        <% if params[:year] %>
+                          year: "<%= params[:year] %>",
+                          month: "<%= params[:month] %>",
+                        <% end %>
+                        editable: true, 
+                        selectable: true,
+                        selectHelper: true,
+			select: function(start, end, allDay) {
+                        y = (start.getFullYear())
+                        m = (start.getMonth()+1)
+                        d = (start.getDate())
+                        var date = y + '-' + m + '-' + d
+
+                  $('#myModal').modal('show');
+                                $.ajax({data:'', success:function(request){$('.modal-body').html(request);}, type:'get', url:'/appointments/new?date='+date});
+                                
+			},
+			events: [
+                          <% @appointments.each do |appointment| %>
+                            {
+                                <% if appointment.appointment_type == 'sports' %>
+                                        backgroundColor: "#DA70D6",
+                                <% elsif appointment.appointment_type == 'eating' %>
+                                        backgroundColor: "#00FF7F",
+                                <% elsif appointment.appointment_type == 'traveling' %>
+                                        backgroundColor: "#228B22",
+                                <% elsif appointment.appointment_type == 'appointment' %>
+                                        backgroundColor: "#DC143C",
+                                <% end %>
+                                        title: '<%= appointment.appointment_things %>',
+                                        start: "<%=  appointment.date %>",
+                                        end: "<%=  appointment.date %>",
+                                        url: '<%= appointment_path(appointment, :from => "full_calendar") %>',
+                            },
+                          <% end %>
+			]
+		}, localOptions));
+                if($('.row-fluid').height() > $(window).height()){
+                  $("#content").css({"height": "auto"});
+                }
+	});
+</script>
+<div id="myTabContent" class="tab-content">
+  <span class="label " style="background-color:#DC143C;font-size:16px">约会</span>
+  <span class="label "style='background-color:#DA70D6; font-size:16px'>运动</span>
+  <span class="label " style="background-color:#00FF7F;font-size:16px">用餐</span>
+  <span class="label " style="background-color:#228B22;font-size:16px">旅游</span>
+  <br/>
+  <br/>
+  <div id='calendar'></div>
+</div>
+<div id="dialog-form"></div>
+
+<div style="background:white;"class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= t(:new_appoinment)%></h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-inverse" data-dismiss="modal"><%= t(:close)%></button>
+        <button type="button" class="btn btn-primary"><%= t(:save)%></button>
+      </div>
+    </div>
+  </div>
+</div>

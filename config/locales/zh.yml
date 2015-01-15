@@ -1,0 +1,12 @@
+
+zh:
+  date:
+    formats:
+      default: "%Y-%m-%d"
+  logout: "LogOut"
+  
+  confirm: "确定"
+  close: "关闭"
+  save: "保存"
+  new_appoinment: "新建事项"
+

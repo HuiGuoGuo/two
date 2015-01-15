@@ -1,18 +1,28 @@
+# -*- encoding : utf-8 -*-
 Diary::Application.routes.draw do
-  devise_for :users
+  resources :appointments do
+    collection do
+      get 'fullcalendar'
+    end
+  end
+
+#  devise_for :users
 
    #  定制登录等界面
    devise_scope :user do
       get "login", :to => "devise/sessions#new"
       get "register", :to => "devise/registrations#new"
-      get "logout", :to => "devise/sessions#destroy"
-      get "profile", :to => "devise/registrations#edit"
-    end
-   match "/login" => "devise/sessions#destroy"
+      get "logout", :to => "devise/sessions#destroy" 
+      get "profile", :to => "devise/registrations#edit" 
+   end
+   #  devise_for :users
+   #devise_for :users, :controllers => {:registrations => "devise_customed/registrations",:sessions => "devise_customed/sessions"}
+   devise_for :users, controllers: { registrations: "devise_customed/registrations" }
 
    #首页
    root :to => 'home#index'
    get "home/index"
+ #  match "/home" => "home/index"
 
   resources :blogs
 

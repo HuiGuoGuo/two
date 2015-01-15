@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -34,7 +35,9 @@ module Diary
     # config.i18n.default_locale = :de
 
     # Configure the default encoding used in templates for Ruby 1.9.
+#     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'en.yml').to_s]
     config.encoding = "utf-8"
+    config.i18n.default_locale = 'zh'
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
