@@ -16,24 +16,21 @@
             <%= render "layouts/title"%>
           </div>
           <!-- 标题栏结束-->
-          <!-- 消息通知开始-->
-          <div>
-            <%=render "layouts/notice"%>
-          </div>
-          <!-- 消息通知结束-->
           <div class="row-fluid">
 
             <div class="span1">
             </div>
 
             <div class="span10">
-
               <% if user_signed_in? %>
                 <!-- 轮播开始-->
                 <%= render "layouts/lunbo" %>
               <%end%>
               <!-- 轮播结束-->
               <div class="row-fluid">
+                  <div>
+                    <%=render "layouts/notice"%>
+                  </div>
                 <% if user_signed_in? %>
                   <%= render "layouts/titles/title_home"%>
                   <!-- 左边栏开始-->
@@ -45,6 +42,11 @@
 
                 <!-- 主内容开始-->
                 <div class="span9">
+                  <!-- 消息通知开始-->
+                  <div>
+                    <%=render "layouts/notice"%>
+                  </div>
+                  <!-- 消息通知结束-->
                   <%= yield %>
                 </div>
                 <!-- 主内容结束-->

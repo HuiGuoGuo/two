@@ -7,6 +7,9 @@ class CreateAppointments < ActiveRecord::Migration
       t.string :appointment_time
       t.string :appointment_space
       t.string :appointment_type
+      t.string :appointment_people
+      t.string :appointment_description
+      t.belongs_to :user
       t.date :date
 
       t.timestamps

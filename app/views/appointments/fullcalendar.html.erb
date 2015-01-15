@@ -1,4 +1,4 @@
-<script src="/assets/fullcalendar.min.js"></script>
+<script src="/assets/fullcalendar/fullcalendar.min.js"></script>
 <script type='text/javascript'>
 	$(document).ready(function() {
 var localOptions = {
@@ -73,7 +73,7 @@ var localOptions = {
 </div>
 <div id="dialog-form"></div>
 
-<div style="background:white;"class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -85,7 +85,7 @@ var localOptions = {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-inverse" data-dismiss="modal"><%= t(:close)%></button>
-        <button type="button" class="btn btn-primary"><%= t(:save)%></button>
+        <button type="button" class="btn btn-primary" onclick="javascript: $('form:first').submit();"><%= t(:save)%></button>
       </div>
     </div>
   </div>

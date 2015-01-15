@@ -1,4 +1,5 @@
-<%= form_for(@appointment, :html => {:class => "form-validate form-horizontal form-striped"}) do |f| %>
+
+<%= form_for(@appointment, :html => {:class => "form-horizontal", :remote => true}) do |f| %>
   <% if @appointment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
@@ -11,11 +12,54 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <label for="textfield" class="control-label">事件标题:</label>
-    <div class="controls">
-      <%= f.text_field :appointment_things %>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">事件&nbsp;:</label>
+    <div class="col-lg-8">
+      <%= f.text_field :appointment_things, :class => "form-control" , :placeholder=>"填写你要做的事" %>
     </div>
   </div>
 
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">地点&nbsp;:</label>
+    <div class="col-lg-8">
+      <%= f.text_field :appointment_space, :class => "form-control" , :placeholder=>"在哪儿做事" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">时间&nbsp;:</label>
+    <div class="col-lg-8">
+      <%= f.text_field :appointment_time, :class => "form-control datepicker" , :placeholder=>"什么时候做", :value => @date  %>
+    </div>
+  </div>
+  <%= hidden_field_tag :date ,@date %>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">人物&nbsp;:</label>
+    <div class="col-lg-8">
+      <%= f.text_field :appointment_people, :class => "form-control" , :placeholder=>"有哪些人参加" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">类型&nbsp;:</label>
+    <div class="col-lg-8">
+      <%= f.select :appointment_type , Appointment.get_appointment_types,{}, :class =>"form-control select select-success mrs mbm" %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">备注&nbsp;:</label>
+    <div class="col-lg-8">
+      <%= f.text_area :appointment_description, :class => "form-control" , :placeholder=>"添加备注", :size => "20x5" %>
+    </div>
+  </div>
+
+
 <% end %>
+<script src="/assets/datepicker/bootstrap-datepicker.js"></script>
+<script >
+  $(".select").select2({dropdownCssClass: 'dropdown-inverse'});
+  $(".datepicker" ).datepicker({format: "yyyy-mm-dd"});
+</script>

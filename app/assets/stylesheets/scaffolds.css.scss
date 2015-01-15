@@ -1,0 +1,149 @@
+.mercury-primary-toolbar .mercury-back-button em, .mercury-expander-button[data-button="back"] em {
+background-image: url(/assets/mercury/toolbar/primary/preview.png);
+}
+  
+
+.textboxlist { font: 11px "Lucida Grande", Verdana; cursor: text; }
+.textboxlist-bits { zoom: 1; overflow: hidden; margin: 0; padding: 3px 4px 0; border: 1px solid #999; *padding-bottom: 3px; }
+.textboxlist-bit { list-style-type: none; float: left; display: block; padding: 0; margin: 0 5px 3px 0; cursor: default; }
+.textboxlist-bit-editable { border: 1px solid #fff; }
+.textboxlist-bit-editable-input { border: 0; padding: 2px 0; *padding-bottom: 0; height: 14px; font: 11px "Lucida Grande", Verdana; }
+.textboxlist-bit-editable-input:focus { outline: 0; }
+.textboxlist-bit-box { position: relative; line-height: 18px; padding: 0 5px; -moz-border-radius: 9px; -webkit-border-radius: 9px; border-radius: 9px; border: 1px solid #CAD8F3; background: #DEE7F8; cursor: default; }
+.textboxlist-bit-box-deletable { padding-right: 15px; }
+.textboxlist-bit-box-deletebutton { position: absolute; right: 4px; top: 6px; display: block; width: 7px; height: 7px; font-size: 1px; background: url('/assets/close.gif'); }
+.textboxlist-bit-box-deletebutton:hover { border: none; background-position: 7px; text-decoration: none; }
+.textboxlist-bit-box-hover { background: #BBCEF1; border: 1px solid #6D95E0; }
+.textboxlist-bit-box-focus { border-color: #598BEC; background: #598BEC; color: #fff; }
+.textboxlist-bit-box-focus .textboxlist-bit-box-deletebutton { background-position: bottom; }
+
+/*  TextboxList Style guidelines 
+            This style doesn't necessarily have to be in a separate file. 
+            It's advisable not to set widths and margins from here, but instead apply it to a particular object or class (#id .textboxlist { width: xxx } or .class .textboxlist { width: xxx })
+            The padding-top + padding-left + height of ".textboxlist-bit-editable-input {}" has to match the line-height of ".textboxlist-bit-box {}" for UI consistency. 
+            The font configuration has to be present in .textboxlist and .textboxlist-bit-editable-input (for IE reasons)
+            The *padding-bottom (notice the *) property of .textboxlist-bits {} has to be equal to the margin-bottom of .textboxlist-bit {} for IE reasons.
+            The padding-top of .textboxlist ul {} has to match the margin-bottom of .textboxlist-bit, and the padding-bottom has to be null.
+            Make sure the border-width of the .textboxlist-bit-editable {} is equal to the border-width of the box (a border that matches the background is advisable for the input)
+            Feel free to edit the borders, fonts, backgrounds and radius.       
+*/
+
+.ui-multiselect { padding:2px 0 2px 4px; text-align:left }
+.ui-multiselect span.ui-icon { float:right }
+.ui-multiselect-single .ui-multiselect-checkboxes input { position:absolute !important; top: auto !important; left:-9999px; }
+.ui-multiselect-single .ui-multiselect-checkboxes label { padding:5px !important }
+
+.ui-multiselect-header { margin-bottom:3px; padding:3px 0 3px 4px }
+.ui-multiselect-header ul { font-size:0.9em }
+.ui-multiselect-header ul li { float:left; padding:0 10px 0 0 }
+.ui-multiselect-header a { text-decoration:none }
+.ui-multiselect-header a:hover { text-decoration:underline }
+.ui-multiselect-header span.ui-icon { float:left }
+.ui-multiselect-header li.ui-multiselect-close { float:right; text-align:right; padding-right:0 }
+
+.ui-multiselect-menu { display:none; padding:3px; position:absolute; z-index:10000; text-align: left }
+.ui-multiselect-checkboxes { position:relative /* fixes bug in IE6/7 */; overflow-y:scroll }
+.ui-multiselect-checkboxes label { cursor:default; display:block; border:1px solid transparent; padding:3px 1px }
+.ui-multiselect-checkboxes label input { position:relative; top:1px }
+.ui-multiselect-checkboxes li { clear:both; font-size:0.9em; padding-right:3px }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label { text-align:center; font-weight:bold; border-bottom:1px solid }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a { display:block; padding:3px; margin:1px 0; text-decoration:none }
+
+/* remove label borders in IE6 because IE6 does not support transparency */
+* html .ui-multiselect-checkboxes label { border:none }
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  margin-right: 4px;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  border: solid transparent;
+  border-width: 0 0 100px 200px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -moz-transform: translate(-300px, 0) scale(4);
+  direction: ltr;
+  cursor: pointer;
+}
+.fileupload-buttonbar .btn,
+.fileupload-buttonbar .toggle {
+  margin-bottom: 5px;
+}
+.files .progress {
+  width: 200px;
+}
+.progress-animated .bar {
+  background: url(/assets/progressbar.gif) !important;
+  filter: none;
+}
+.fileupload-loading {
+  position: absolute;
+  left: 50%;
+  width: 128px;
+  height: 128px;
+  background: url(/assets/loading.gif) center no-repeat;
+  display: none;
+}
+.fileupload-processing .fileupload-loading {
+  display: block;
+}
+
+/* Fix for IE 6: */
+html .fileinput-button {
+  line-height: 19px;
+  margin: 0 5px -4px -1px;
+}
+
+/* Fix for IE 7: */
++html .fileinput-button {
+  margin: 4px;
+}
+
+@media (max-width: 480px) {
+  .files .btn span {
+    display: none;
+  }
+  .files .preview * {
+    width: 40px;
+  }
+  .files .name * {
+    width: 80px;
+    display: inline-block;
+    word-wrap: break-word;
+  }
+  .files .progress {
+    width: 20px;
+  }
+  .files .delete {
+    width: 60px;
+  }
+}
+.muted {
+  color: #999999;
+}
+
+.text-warning {
+  color: #c09853;
+}
+
+.text-error {
+  color: #b94a48;
+}
+
+.text-info {
+  color: #3a87ad;
+}
+
+.text-success {
+  color: #468847;
+}
+.label-error, .badge-error {
+  background-color: #b94a48;
+}
+

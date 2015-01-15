@@ -15,8 +15,8 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @date = params[:date]
     render :partial => "form"
-   # respond_with(@appointment)
   end
 
   def edit
@@ -24,8 +24,12 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(params[:appointment])
+    @appointment.date = params[:date]
+    @appointment.user_id = current_user.id
     @appointment.save
-    respond_with(@appointment)
+    respond_to do |format|
+      format.html {redirect_to fullcalendar_appointments_path,:notice => "保存成功!"}
+    end
   end
 
   def update
