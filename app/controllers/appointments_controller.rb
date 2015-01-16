@@ -10,7 +10,9 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    respond_with(@appointment)
+  end
+
+  def view 
   end
 
   def new

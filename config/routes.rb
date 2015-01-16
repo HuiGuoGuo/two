@@ -4,6 +4,9 @@ Diary::Application.routes.draw do
     collection do
       get 'fullcalendar'
     end
+    member do
+      get 'view'
+    end
   end
 
 #  devise_for :users

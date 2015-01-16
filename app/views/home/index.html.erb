@@ -1,6 +1,15 @@
 
 
 
+
+<% content_for :lunbo do %>
+  <%= render :partial => "layouts/lunbo" %>
+<%end%>
+
+<% content_for :titles do %>
+  <%= render "layouts/titles/title_home"%>
+<%end%>
+
 <% content_for :left do %>
   <%= render :partial => "layouts/left/left_01" %>
 <%end%>

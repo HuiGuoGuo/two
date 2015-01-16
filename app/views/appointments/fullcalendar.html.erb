@@ -33,10 +33,10 @@ var localOptions = {
                         d = (start.getDate())
                         var date = y + '-' + m + '-' + d
 
-                  $('#myModal').modal('show');
-                                $.ajax({data:'', success:function(request){$('.modal-body').html(request);}, type:'get', url:'/appointments/new?date='+date});
-                                
-			},
+                        $('#myModal').modal('show');
+                        $.ajax({data:'', success:function(request){$('.modal-body').html(request);}, type:'get', url:'/appointments/new?date='+date});
+
+                        },
 			events: [
                           <% @appointments.each do |appointment| %>
                             {
@@ -52,12 +52,14 @@ var localOptions = {
                                         title: '<%= appointment.appointment_things %>',
                                         start: "<%=  appointment.date %>",
                                         end: "<%=  appointment.date %>",
-                                        url: '<%= appointment_path(appointment, :from => "full_calendar") %>',
+                                        url: '<%= appointment_path(appointment) %>',
                             },
-                          <% end %>
-			]
-		}, localOptions));
-                if($('.row-fluid').height() > $(window).height()){
+                        <% end %>
+                          ],
+                          eventClick: function(jsEvent) {
+                          }
+                  }, localOptions));
+if($('.row-fluid').height() > $(window).height()){
                   $("#content").css({"height": "auto"});
                 }
 	});
@@ -67,6 +69,8 @@ var localOptions = {
   <span class="label "style='background-color:#DA70D6; font-size:16px'>运动</span>
   <span class="label " style="background-color:#00FF7F;font-size:16px">用餐</span>
   <span class="label " style="background-color:#228B22;font-size:16px">旅游</span>
+  <span class="label " style="background-color:#228B22;font-size:16px">看书</span>
+  <span class="label " style="background-color:#228B22;font-size:16px">其它</span>
   <br/>
   <br/>
   <div id='calendar'></div>
@@ -90,3 +94,9 @@ var localOptions = {
     </div>
   </div>
 </div>
+
+
+
+<% content_for :left do %>
+  <%= render :partial => "layouts/left/left_01" %>
+<%end%>
