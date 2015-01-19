@@ -21,14 +21,14 @@ development:
 #  password:
 #  host: localhost
 
- #production:
- #adapter: postgresql
- #database: pair_production
- #encoding: unicode
- #pool: 5
- #username:root 
- #password:root
- #host: localhost
+production:
+adapter: postgresql
+database: pair_production
+encoding: unicode
+pool: 5
+username:root 
+password:root
+host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
