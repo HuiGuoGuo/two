@@ -6,7 +6,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body style="overflow-y:auto;">
+  <body style="overflow-y:auto;<%=yield :background%> background:url('/assets/background/65.jpg')center 0 no-repeat ;background-size:100%;" >
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">

@@ -1,6 +1,11 @@
-<h1>Editing appointment</h1>
+<a>编辑事件</a>
+
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @appointment %> |
-<%= link_to 'Back', appointments_path %>
+<div class="span12">
+  <div class="form-actions">
+<%= link_to '取消', appointment_path(@appointment) %> 
+<%= link_to '确定', appointments_path %>
+</div>
+</div>

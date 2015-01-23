@@ -1,5 +1,24 @@
 <p id="notice"><%= notice %></p>
+<div style="background-image:url('/assets/appointment/show6.jpg') ;width:1024px;height:800px;font-fade:'华文琥珀';">
+  <div>
+    12321</br>
+    12321</br>
+    12321</br>
+    12321</br>
+    12321</br>
+    12321</br>
+    12321</br>
+    12321</br>
+  </div>
+</div>
+</br>
 
-
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<div class="span12">
+  <div class="form-actions">
+    <%= link_to 'Edit', edit_appointment_path(@appointment), :class => "btn btn-mini btn-info" %> 
+    <%= link_to 'Back', fullcalendar_appointments_path, :class => "btn btn-mini btn-inverse" %>
+  </div>
+</div>
+<% content_for :left do %>
+  <%= render :partial => "layouts/left/left_01" %>
+<%end%>

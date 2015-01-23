@@ -48,6 +48,10 @@ var localOptions = {
                                         backgroundColor: "#228B22",
                                 <% elsif appointment.appointment_type == 'appointment' %>
                                         backgroundColor: "#DC143C",
+                                <% elsif appointment.appointment_type == 'reading' %>
+                                        backgroundColor: "#CCFF99",
+                                <% elsif appointment.appointment_type == 'else' %>
+                                        backgroundColor: "#CCCCCC",
                                 <% end %>
                                         title: '<%= appointment.appointment_things %>',
                                         start: "<%=  appointment.date %>",
@@ -69,8 +73,8 @@ if($('.row-fluid').height() > $(window).height()){
   <span class="label "style='background-color:#DA70D6; font-size:16px'>运动</span>
   <span class="label " style="background-color:#00FF7F;font-size:16px">用餐</span>
   <span class="label " style="background-color:#228B22;font-size:16px">旅游</span>
-  <span class="label " style="background-color:#228B22;font-size:16px">看书</span>
-  <span class="label " style="background-color:#228B22;font-size:16px">其它</span>
+  <span class="label " style="background-color:#CCFF99;font-size:16px">看书</span>
+  <span class="label " style="background-color:#CCCCCC;font-size:16px">其它</span>
   <br/>
   <br/>
   <div id='calendar'></div>

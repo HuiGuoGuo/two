@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class AppointmentsController < ApplicationController
   before_filter :set_appointment, only: [:show, :edit, :update, :destroy]
-
+ # layout  false ,only: [:show]
   respond_to :html
 
   def index
@@ -10,6 +10,8 @@ class AppointmentsController < ApplicationController
   end
 
   def show
+    respond_with(@appointment,notice: "111")
+
   end
 
   def view 
